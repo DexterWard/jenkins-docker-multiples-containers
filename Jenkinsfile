@@ -45,11 +45,18 @@ pipeline {
                     image 'maven:3.9.9-eclipse-temurin-17-alpine'  // Usamos la misma imagen Maven para desplegar
                     args '-v /home/jenkins/.m2:/root/.m2'  // Compartir el repositorio local de Maven
                 }
+                input {
+                    message 'Millas'
+                    parameters {
+                            string 'miles'
+                     }
+                }
             }
             steps {                
                         // Desplegar el JAR (opcional, dependiendo del entorno de despliegue)
                         // Puedes cambiar esta línea para desplegar a un servidor, Nexus, etc.
-                        sh 'mvn deploy'
+                        sh 'mvn exec:java -Dexec.mainClass="com.apasoft.App"
+'
                     }           
         }
     }
