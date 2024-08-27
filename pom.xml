@@ -25,10 +25,10 @@
                     <source>17</source>
                     <target>17</target>
                      <archive>
-          <manifest>
-            <addClasspath>true</addClasspath>
-            <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>com.mypackage.MyClass</mainClass>
+                     <manifest>
+                         <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.apasoft.App</mainClass>
           </manifest>
         </archive>
                 </configuration>
