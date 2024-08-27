@@ -40,17 +40,18 @@ pipeline {
         }
 
         stage('Deploy') {
-            agent {
-                docker {
-                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // Usamos la misma imagen Maven para desplegar
-                    args '-v /home/jenkins/.m2:/root/.m2'  // Compartir el repositorio local de Maven
-                }
-                input {
+            input {
                     message 'Millas'
                     parameters {
                             string 'miles'
                      }
                 }
+            agent {
+                docker {
+                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // Usamos la misma imagen Maven para desplegar
+                    args '-v /home/jenkins/.m2:/root/.m2'  // Compartir el repositorio local de Maven
+                }
+                
             }
             steps {                
                         // Desplegar el JAR (opcional, dependiendo del entorno de despliegue)
