@@ -39,6 +39,20 @@ pipeline {
                   }            
         }
 
+         stage('Static Code Analysis') {
+            agent {
+                docker {
+                    image 'sonarsource/sonar-scanner-cli'  // Usamos la imagen de SonarQube Scanner para análisis de código estático
+                }
+            }
+            steps {
+                
+                    
+                        // Ejecutar SonarQube para análisis de código estático
+                        sh 'sonar-scanner'
+                
+            }
+        }
         stage('Deploy') {
             input {
                     message 'Millas'
@@ -56,7 +70,7 @@ pipeline {
             steps {                
                         // Desplegar el JAR (opcional, dependiendo del entorno de despliegue)
                         // Puedes cambiar esta línea para desplegar a un servidor, Nexus, etc.
-                        sh 'mvn exec:java -Dexec.mainClass="com.apasoft.App"'
+                        sh "mvn exec:java -Dexec.mainClass='com.apasoft.App' ${miles}"
                     }           
         }
     }
