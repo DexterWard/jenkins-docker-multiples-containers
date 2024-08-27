@@ -55,7 +55,7 @@ pipeline {
             steps {                
                         // Desplegar el JAR (opcional, dependiendo del entorno de despliegue)
                         // Puedes cambiar esta línea para desplegar a un servidor, Nexus, etc.
-                        sh "java -cp 	target/miles-to-kilometers-1.0-SNAPSHOT.jar com.apasoft.App.jar ${miles}"
+                        sh "java -cp 	target/miles-to-kilometers-1.0-SNAPSHOT.jar com.apasoft.App ${miles}"
                     }           
         }
     }
