@@ -55,7 +55,7 @@ pipeline {
             steps {                
                         // Desplegar el JAR (opcional, dependiendo del entorno de despliegue)
                         // Puedes cambiar esta línea para desplegar a un servidor, Nexus, etc.
-                        sh 'mvn exec:java -Dexec.mainClass='com.apasoft.App''
+                        sh 'mvn exec:java -Dexec.mainClass=com.apasoft.App'
 '
                     }           
         }
