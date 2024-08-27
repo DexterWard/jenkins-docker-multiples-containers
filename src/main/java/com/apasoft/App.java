@@ -1,16 +1,17 @@
 package com.apasoft;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class App {
     private static final double MILES_TO_KILOMETERS_CONVERSION = 1.60934;
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+       //Scanner scanner = new Scanner(System.in);
 
         // Solicitar la distancia en millas
-        System.out.print("Ingrese la distancia en millas: ");
-        double miles = scanner.nextDouble();
+        //System.out.print("Ingrese la distancia en millas: ");
+        //double miles = scanner.nextDouble();
+        double miles = args[1].nextDouble();
 
         // Convertir millas a kilómetros
         double kilometers = convertMilesToKilometers(miles);
@@ -18,7 +19,7 @@ public class App {
         // Imprimir el resultado
         System.out.println(miles + " millas son equivalentes a " + kilometers + " kilómetros.");
         
-        scanner.close();
+        //scanner.close();
     }
 
     // Método para convertir millas a kilómetros
