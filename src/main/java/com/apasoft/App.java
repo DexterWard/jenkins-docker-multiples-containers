@@ -11,7 +11,7 @@ public class App {
         // Solicitar la distancia en millas
         //System.out.print("Ingrese la distancia en millas: ");
         //double miles = scanner.nextDouble();
-        double miles = args[1].nextDouble();
+        double miles = Double.parseDouble(args[1]);
 
         // Convertir millas a kilómetros
         double kilometers = convertMilesToKilometers(miles);
