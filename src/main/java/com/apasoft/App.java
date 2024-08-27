@@ -17,12 +17,12 @@ public class App {
         double kilometers = convertMilesToKilometers(miles);
 
         // Imprimir el resultado
-        System.out.println(miles + " millas son equivalentes a " + kilometers + " kilómetros.");
+        System.out.println(miles + " miles are equivalent to " + kilometers + " kilimeters.");
         
         //scanner.close();
     }
 
-    // Método para convertir millas a kilómetros
+    // Method for converting miles to kilometers
     public static double convertMilesToKilometers(double miles) {
         return miles * MILES_TO_KILOMETERS_CONVERSION;
     }

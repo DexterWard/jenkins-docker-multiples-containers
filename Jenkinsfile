@@ -4,12 +4,12 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // Usamos una imagen Maven con JDK 17
-                    args '-v /home/jenkins/.m2:/root/.m2'  // Compartir el repositorio local de Maven
+                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // We use a Maven image with JDK 17
+                    args '-v /home/jenkins/.m2:/root/.m2'  //Share local Maven repository
                 }
             }
             steps {              
-                        // Compilar el proyecto Maven
+                        // Build the Maven project
                         sh 'mvn clean compile'                  
             }            
         }
@@ -17,12 +17,12 @@ pipeline {
         stage('Test') {
             agent {
                 docker {
-                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // Usamos la misma imagen Maven para las pruebas                    
-                    args '-v /home/jenkins/.m2:/root/.m2'  // Compartir el repositorio local de Maven
+                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // We use the same Maven image for testing                    
+                    args '-v /home/jenkins/.m2:/root/.m2'  // Share local Maven repository
                 }
             }
             steps {               
-                        // Ejecutar pruebas unitarias
+                        // Running unit tests
                         sh 'mvn test'
                     }           
         }
@@ -30,8 +30,8 @@ pipeline {
         stage('Package') {
             agent {
                 docker {
-                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // Usamos la misma imagen Maven para empaquetar
-                    args '-v /home/jenkins/.m2:/root/.m2'  // Compartir el repositorio local de Maven
+                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // We use the same Maven image for package
+                    args '-v /home/jenkins/.m2:/root/.m2'  // Share local Maven repository
                 }
             }
             steps {                  
@@ -40,21 +40,21 @@ pipeline {
         }
         stage('Deploy') {
             input {
-                    message 'Millas'
+                    message 'MilEnter the miles to calculate'
                     parameters {
                             string 'miles'
                      }
                 }
             agent {
                 docker {
-                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // Usamos la misma imagen Maven para desplegar
-                    args '-v /home/jenkins/.m2:/root/.m2'  // Compartir el repositorio local de Maven
+                    image 'maven:3.9.9-eclipse-temurin-17-alpine'  // We use the same Maven image for deploying
+                    args '-v /home/jenkins/.m2:/root/.m2'  // Share local Maven repository
                 }
                 
             }
             steps {                
-                        // Desplegar el JAR (opcional, dependiendo del entorno de despliegue)
-                        // Puedes cambiar esta línea para desplegar a un servidor, Nexus, etc.
+                        // Execute the jar file
+                        // 
                         sh "java -cp 	target/miles-to-kilometers-1.0-SNAPSHOT.jar com.apasoft.App ${miles}"
                     }           
         }
@@ -62,13 +62,13 @@ pipeline {
 
     post {
         always {
-            echo 'Pipeline completado.'
+            echo 'Pipeline completed.'
         }
         success {
-            echo 'Pipeline ejecutado con éxito.'
+            echo 'Pipeline executed successfully.'
         }
         failure {
-            echo 'Pipeline falló.'
+            echo 'Pipeline failed.'
         }
     }
 }
