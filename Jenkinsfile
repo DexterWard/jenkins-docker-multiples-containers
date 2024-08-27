@@ -55,7 +55,7 @@ pipeline {
             steps {                
                         // Desplegar el JAR (opcional, dependiendo del entorno de despliegue)
                         // Puedes cambiar esta línea para desplegar a un servidor, Nexus, etc.
-                        sh "java com.apasoft.App ${miles}"
+                        sh "java target.classes.com.apasoft.App ${miles}"
                     }           
         }
     }
