@@ -40,7 +40,7 @@ pipeline {
         }
         stage('Deploy') {
             input {
-                    message 'MilEnter the miles to calculate'
+                    message 'Enter the miles to calculate'
                     parameters {
                             string 'miles'
                      }
